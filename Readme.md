@@ -16,13 +16,3 @@ Projede statik bir CSV dosyası yerine, Yahoo Finance API (yfinance) kullanılar
   Kapsam: 01.01.2020 tarihinden günümüze kadar olan günlük kapanış (Close) fiyatları.
   Normalizasyon: Derin öğrenme modellerinin daha hızlı ve kararlı yakınsaması (convergence) için veriler MinMaxScaler kullanılarak 0 ile 1 aralığına ölçeklendirilmiştir.
   Pencereleme (Windowing): Modelin eğitilmesi için veri seti, 60 günlük kayan pencerelere (sliding window) bölünmüştür.
-
-Model Mimarisi
-Model, PyTorch kütüphanesi kullanılarak sıfırdan inşa edilmiştir.
-  Giriş Katmanı: [Batch Size, Sequence Length (60), Input Size (1)]
-  LSTM Katmanı: 50 nöronlu (hidden size) LSTM hücresi. Zaman serisindeki özellikleri çıkarır.
-  Tam Bağlantılı Katman (Fully Connected): LSTM çıktısını tek bir fiyat tahminine dönüştüren doğrusal katman.
-  Optimizasyon: Adam Optimizer (Learning Rate: 0.01)
-  Kayıp Fonksiyonu: MSE (Mean Squared Error) - Regresyon problemleri için standart hata metriği.
-
-  
