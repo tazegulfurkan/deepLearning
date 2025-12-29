@@ -7,7 +7,7 @@ Proje Konusu
 Seçilme Gerekçesi ve Alanın Önemi: Kripto para piyasaları, yüksek volatiliteye sahip olması ve geleneksel finansal araçlardan farklı dinamiklerle hareket etmesi nedeniyle tahmin edilmesi en zor alanlardan biridir. Geleneksel teknik analiz yöntemleri (RSI, MACD vb.) genellikle geçmiş fiyat hareketlerine dayalı gecikmeli sinyaller üretirken, Derin Öğrenme modelleri verideki gizli örüntüleri (patterns) ve momentumu öğrenerek daha dinamik tahminler sunabilir.
 
 Neden LSTM? (Yöntem Analizi): Standart Yapay Sinir Ağları (ANN), veriler arasındaki zamansal ilişkiyi (önceki günün bugüne etkisi) kurmakta yetersiz kalır. Bu projede LSTM ağlarının tercih edilme sebebi şunlardır:
-  Hafıza Hücreleri: LSTM, "Vanishing Gradient" problemini çözerek uzun vadeli bağımlılıkları öğrenebilir.,
+  Hafıza Hücreleri: LSTM, "Vanishing Gradient" problemini çözerek uzun vadeli bağımlılıkları öğrenebilir.
   Sıralı Veri İşleme: Son 60 günün fiyat hareketlerini bir bütün (sequence) olarak işleyip, bu dizilimin sonucunda oluşacak 61. günü tahmin eder.
 
 Veri Seti ve Ön İşleme
