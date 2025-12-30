@@ -1,18 +1,63 @@
-Derin Öğrenme Tabanlı Bitcoin Fiyat Tahmin Sistemi (LSTM)
+📈 Derin Öğrenme ile Canlı Bitcoin Fiyat Tahmin Sistemi (LSTM)
+Bu proje, BİL403 - Yazılım Mühendisliği dersi kapsamında geliştirilmiştir. Statik veri setleri yerine Yahoo Finance API üzerinden anlık veri çeken ve LSTM (Long Short-Term Memory) mimarisi ile Bitcoin'in (BTC) gelecek fiyat hareketlerini tahmin eden dinamik bir yapay zeka uygulamasıdır.
 
-Bu proje, finansal zaman serilerinin analizi ve tahmini için Derin Öğrenme (Deep Learning) yöntemlerinden biri olan LSTM (Long Short-Term Memory) mimarisini kullanan bir yapay zeka uygulamasıdır. Sistem, tarihsel piyasa verilerini analiz ederek Bitcoin'in (BTC) kısa vadeli fiyat hareketlerini öngörmeyi amaçlar.
+🚀 Proje Hakkında
+Kripto para piyasaları saniyelik değişir. Bu projede bayat veri dosyaları yerine gerçek zamanlı finansal veriler kullanılmıştır. Sistem şu adımları izler:
 
-Proje Konusu
+Canlı Veri Akışı: yfinance kütüphanesi ile 2020'den bugüne kadar olan tüm BTC verileri anlık çekilir.
 
-Seçilme Gerekçesi ve Alanın Önemi: Kripto para piyasaları, yüksek volatiliteye sahip olması ve geleneksel finansal araçlardan farklı dinamiklerle hareket etmesi nedeniyle tahmin edilmesi en zor alanlardan biridir. Geleneksel teknik analiz yöntemleri (RSI, MACD vb.) genellikle geçmiş fiyat hareketlerine dayalı gecikmeli sinyaller üretirken, Derin Öğrenme modelleri verideki gizli örüntüleri (patterns) ve momentumu öğrenerek daha dinamik tahminler sunabilir.
+Akıllı Pencereleme: Model, sadece düne değil, son 60 günün piyasa hareketlerine (momentum) bakarak karar verir.
 
-Neden LSTM? (Yöntem Analizi): Standart Yapay Sinir Ağları (ANN), veriler arasındaki zamansal ilişkiyi (önceki günün bugüne etkisi) kurmakta yetersiz kalır. Bu projede LSTM ağlarının tercih edilme sebebi şunlardır:
-  Hafıza Hücreleri: LSTM, "Vanishing Gradient" problemini çözerek uzun vadeli bağımlılıkları öğrenebilir.
-  Sıralı Veri İşleme: Son 60 günün fiyat hareketlerini bir bütün (sequence) olarak işleyip, bu dizilimin sonucunda oluşacak 61. günü tahmin eder.
+Normalizasyon: Veriler MinMaxScaler ile 0-1 aralığına optimize edilir.
 
-Veri Seti ve Ön İşleme
-Projede statik bir CSV dosyası yerine, Yahoo Finance API (yfinance) kullanılarak canlı ve güncel veri çekilmektedir.
-  Veri Kaynağı: Yahoo Finance (BTC-USD)
-  Kapsam: 01.01.2020 tarihinden günümüze kadar olan günlük kapanış (Close) fiyatları.
-  Normalizasyon: Derin öğrenme modellerinin daha hızlı ve kararlı yakınsaması (convergence) için veriler MinMaxScaler kullanılarak 0 ile 1 aralığına ölçeklendirilmiştir.
-  Pencereleme (Windowing): Modelin eğitilmesi için veri seti, 60 günlük kayan pencerelere (sliding window) bölünmüştür.
+Tahmin ve Görselleştirme: Kullanıcı hiçbir veri girmek zorunda kalmadan, sistem otomatik olarak geleceği tahmin eder ve trend grafiğini çizer.
+
+🛠️ Kullanılan Teknolojiler
+Python: Ana geliştirme dili.
+
+PyTorch: LSTM modelinin mimarisi ve eğitimi.
+
+yfinance: (Fark Yaratan Özellik) Canlı borsa verilerinin çekilmesi.
+
+Gradio: İnteraktif ve modern web arayüzü.
+
+Matplotlib: Dinamik fiyat grafiklerinin çizilmesi.
+
+Scikit-Learn: Veri ölçeklendirme (Scaling).
+
+📂 Proje Yapısı
+app.py: Web arayüzünü başlatan ve canlı tahmin yapan ana dosya.
+
+train_model.py: Güncel veriyi çekip modeli sıfırdan eğiten modül.
+
+lstm_model.pth: Eğitilmiş yapay zeka model dosyası.
+
+scaler.gz: Veri ölçeklendirme dosyası.
+
+requirements.txt: Gerekli kütüphane listesi.
+
+⚙️ Kurulum ve Çalıştırma
+Projeyi çalıştırmak çok basittir. Veri indirme derdi yoktur, sistem her şeyi otomatik yapar.
+
+1. Gereksinimleri Yükleyin
+
+Bash
+
+pip install -r requirements.txt
+2. Uygulamayı Başlatın (Model dosyası hazır geldiği için eğitime gerek yoktur, direkt çalışır)
+
+Bash
+
+python app.py
+Terminalde çıkan linke tıklayın (örn: http://127.0.0.1:7860).
+
+📊 Kullanım Senaryosu
+Arayüz açılır.
+
+"Grafikte kaç günlük geçmiş görmek istersin?" kutusuna bir sayı girilir (Örn: 180).
+
+Gönder butonuna basılır.
+
+Sistem saniyeler içinde internetten veriyi çeker, analiz eder ve sonucu ekrana basar.
+
+Çıktı: Tahmin edilen fiyat, Yükseliş/Düşüş beklentisi ve detaylı grafik.
