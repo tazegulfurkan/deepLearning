@@ -56,4 +56,4 @@ if __name__ == "__main__":
             print(f"Epoch {epoch+1}, Loss: {loss.item():.5f}")
 
     torch.save(model.state_dict(), "lstm_model.pth")
-    print("✅ Model eğitildi ve kaydedildi!")
+    print("Model eğitildi ve kaydedildi!")
